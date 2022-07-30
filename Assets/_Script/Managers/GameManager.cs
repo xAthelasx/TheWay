@@ -9,6 +9,16 @@ public class GameManager : MonoBehaviour
     public static GameManager instance; //Variable del singleton.
     #endregion
 
+    #region Private Variables
+    [SerializeField] AudioSource musicSource;
+    [SerializeField] AudioSource fxSource;
+    #endregion
+
+    #region Public Variables
+    public AudioSource MusicSource { get { return musicSource; } }
+    public AudioSource FxSource { get { return fxSource; } }
+    #endregion
+
     #region Monobehaviour Method
     private void Awake()
     {
@@ -22,8 +32,21 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject); //La destruimos.
         }
     }
+    private void Start()
+    {
+        LoadConfiguration();   
+    }
     #endregion
     #region Public Method
+    /// <summary>
+    /// Método que se encarga de el audio en el juego.
+    /// </summary>
+    /// <param name="sound">Scriptable con el archivo a reproducir.</param>
+    public void PlayAudio(Sound sound)
+    {
+        if(sound.soundtype == SoundType.MUSIC) { PlayMusic(sound); }
+        else { PlayFx(sound); }
+    }
     /// <summary>
     /// Método que se encarga de cambiar entre escenas.
     /// </summary>
@@ -38,6 +61,40 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit(); 
+    }
+
+    public void Save(int vSync)
+    {
+        PlayerPrefs.SetFloat("MusicVolume", musicSource.volume);
+        PlayerPrefs.SetFloat("FxVolume", fxSource.volume);
+        PlayerPrefs.SetInt("Vsync", vSync);
+    }
+    #endregion
+    #region Private variables
+    /// <summary>
+    /// Método usado en caso de que el audio sea música.
+    /// </summary>
+    private void PlayMusic(Sound sound)
+    {
+        musicSource.clip = sound.clip;
+        musicSource.loop = sound.loop;
+        musicSource.Play();
+    }
+    /// <summary>
+    /// Método usado en caso de que el audio sea fx.
+    /// </summary>
+    private void PlayFx(Sound sound)
+    {
+        fxSource.clip = sound.clip;
+        fxSource.loop = sound.loop;
+        fxSource.Play();
+    }
+
+    private void LoadConfiguration()
+    {
+        musicSource.volume = PlayerPrefs.GetFloat("MusicVolume");
+        fxSource.volume = PlayerPrefs.GetFloat("FxVolume");
+        if(PlayerPrefs.GetInt("Vsync") == 1) { Application.targetFrameRate = 60; }
     }
     #endregion
 }

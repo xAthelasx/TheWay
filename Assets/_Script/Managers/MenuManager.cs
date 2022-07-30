@@ -6,10 +6,14 @@ public class MenuManager : MonoBehaviour
 {
     #region SerializeField variables
     [SerializeField] GameObject[] panels;
+    [SerializeField] Sound musicMenu;
     #endregion
 
     #region Monobehaviour Method
-
+    private void Start()
+    {
+        GameManager.instance.PlayAudio(musicMenu);
+    }
     #endregion
 
     #region Public Method
