@@ -205,19 +205,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 78453394}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1285174633}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: QuitGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &78453394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2112,6 +2100,7 @@ MonoBehaviour:
   musicMenu: {fileID: 11400000, guid: cdf13e12311e6594f918121a8ae8aa64, type: 2}
   panelLevel: {fileID: 644794306}
   numberOfLevels: 3
+  quitButton: {fileID: 78453393}
 --- !u!4 &1214930260
 Transform:
   m_ObjectHideFlags: 0
@@ -2339,17 +2328,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1238351202}
   m_CullTransparentMesh: 1
---- !u!114 &1285174633 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8314223655309522818, guid: 6f0b20c8722addc4393c0d5e82e9ca04, type: 3}
-  m_PrefabInstance: {fileID: 8314223656440267499}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 776432eef9a85db4e9bf3a7e97692d6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1370285786
 GameObject:
   m_ObjectHideFlags: 0

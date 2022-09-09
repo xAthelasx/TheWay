@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
@@ -10,11 +11,14 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] GameObject panelLevel;
     [SerializeField] int numberOfLevels = 5;
+
+    [SerializeField] Button quitButton;
     #endregion
 
     #region Monobehaviour Method
     private void Start()
     {
+        quitButton.onClick.AddListener(() => GameManager.instance.QuitGame());
         GameManager.instance.PlayAudio(musicMenu);
         FillLevels();
     }

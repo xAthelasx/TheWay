@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void QuitGame()
     {
+        Debug.Log("Quit");
         Application.Quit(); 
     }
 
